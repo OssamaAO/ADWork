@@ -194,7 +194,9 @@ public class Empleado implements Serializable {
 
     @Override
     public String toString() {
-        return "Modelo.Empleado[ dni=" + dni + " ]";
+        return "Empleado{" + "dni=" + dni + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", fechaNacimiento=" + fechaNacimiento + ", salario=" + salario + ", esjefe=" + esjefe + '}';
     }
+
+    
 
 }
