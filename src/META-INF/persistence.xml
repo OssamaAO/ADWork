@@ -11,7 +11,7 @@
     <class>Modelo.Empleado</class>
     <class>Modelo.Caramelo</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-52-211-158-144.eu-west-1.compute.amazonaws.com:5432/dfn82dgsh0kvh9"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://ec2-52-211-158-144.eu-west-1.compute.amazonaws.com:5432/dfn82dgsh0kvh9?sslmode=require"/>
       <property name="javax.persistence.jdbc.user" value="aezbjqfzekrpfq"/>
       <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
       <property name="javax.persistence.jdbc.password" value="f3b0e9cfc1db1dd57c31e0b261b3abd12775eb7e3684a4ddc4e316f82761b061"/>
