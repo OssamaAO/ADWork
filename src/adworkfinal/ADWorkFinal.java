@@ -26,13 +26,13 @@ public class ADWorkFinal {
         EntityManagerFactory factory = Persistence.createEntityManagerFactory("ADWorkFinalPU");
         EntityManager em = factory.createEntityManager();
         
-        SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:ii:ss");
 
-        Empleado em1 = new Empleado("111111E" , "Ossama", "Aouad", 19, formateador.parse("01/04/2002"), 1000.00, true, "eketit");
+        Empleado em1 = new Empleado("111111E" , "Ossama", "Aouad", 19, sdf.parse("2002-04-01 15:03:23") , 1000.00, true, "eketit");
         
         em.getTransaction().begin();
 
-        em.persist(em1);
+        
         
         em.getTransaction().commit();
 
