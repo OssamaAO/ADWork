@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.3.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-5.2.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-5.2.xsd">
+
+    <bean id = "dataSource" 
+          class = "org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name = "driverClassName" value = "org.postgresql.Driver"/>
+        <property name = "url" value = "postgres://aezbjqfzekrpfq:f3b0e9cfc1db1dd57c31e0b261b3abd12775eb7e3684a4ddc4e316f82761b061@ec2-52-211-158-144.eu-west-1.compute.amazonaws.com:5432/dfn82dgsh0kvh9"/>
+        <property name = "username" value = "aezbjqfzekrpfq"/>
+        <property name = "password" value = "toor"/>
+    </bean>
+    
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">  
+        <property name="dataSource" ref="dataSource"></property> 
+        <property name="packagesToScan" value=" Modelo" />
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">none</prop> <!--   https://vladmihalcea.com/hibernate-hbm2ddl-auto-schema/  -->
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+            </props>
+        </property>
+    </bean>  
+      <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+ 
+    
+    
+    
+</beans>

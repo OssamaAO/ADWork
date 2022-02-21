@@ -40,7 +40,6 @@ public class ADWorkFinal {
         em.getTransaction().begin();
         
        
-        
         //em.persist(em1);
         //Empleado e = em.find(Empleado.class, "111111E");
         //e.setFechaNacimiento(sdf.parse("2002-04-01"));
