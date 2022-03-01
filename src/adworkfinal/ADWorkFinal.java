@@ -6,6 +6,7 @@
 package adworkfinal;
 
 import Modelo.Empleado;
+import JPADAO.EmpleadoImp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -13,6 +14,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -20,35 +23,25 @@ import javax.persistence.Query;
  */
 public class ADWorkFinal {
 
-    
     public static void main(String[] args) throws ParseException {
-
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("ADWorkFinalPU");
-        EntityManager em = factory.createEntityManager();
+        ApplicationContext context = new ClassPathXmlApplicationContext("Spring/ADWorkSpringXMLConfig.xml");
+        EmpleadoImp empleadoImpl = (EmpleadoImp) context.getBean("EmpleadoJPATemplate");
         
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
+        Empleado em1 = new Empleado("111111E", "Ossama", "Aouad", 19, sdf.parse("2002-04-01"), 1000.00, true, "eketit");
         
-        Empleado em1 = new Empleado("111111E" , "Ossama", "Aouad", 19, sdf.parse("2002-04-01") , 1000.00, true, "eketit");
         
-        Query q = em.createQuery("select e from Empleado e");
-        List<Empleado> empleados = q.getResultList();
-        empleados.forEach((e) -> {
-            System.out.println(e);
-        });
+        //empleadoImpl.create(em1);
         
-        em.getTransaction().begin();
+        //System.out.println(empleadoImpl.getEmpleado(em1.getDni()));
         
-       
-        //em.persist(em1);
-        //Empleado e = em.find(Empleado.class, "111111E");
-        //e.setFechaNacimiento(sdf.parse("2002-04-01"));
-        //em.remove(e);
+        //Empleado e = empleadoImpl.getEmpleado(em1.getDni());
+        //e.setNombre("Ossamaa");
+        //System.out.println(empleadoImpl.getEmpleado(em1.getDni()));
         
-        em.getTransaction().commit();
-
-        em.close();
-        factory.close();
+        //Empleado e = empleadoImpl.getEmpleado(em1.getDni());
+        //empleadoImpl.delete(e);
+        
 
     }
 
