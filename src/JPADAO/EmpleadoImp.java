@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
+import static org.springframework.web.servlet.function.RequestPredicates.param;
 
 public class EmpleadoImp implements EmpleadoDAO{
     
@@ -55,5 +56,5 @@ public class EmpleadoImp implements EmpleadoDAO{
         entityManager.persist(e);
         entityManager.getTransaction().commit();
     }
-    
+
 }
