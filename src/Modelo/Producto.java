@@ -52,7 +52,7 @@ public class Producto implements Serializable {
     @Column(name = "descripcion")
     private String descripcion;
     @Column(name = "precio_unidad")
-    private BigInteger precioUnidad;
+    private Double precioUnidad;
     @Column(name = "stock")
     private Integer stock;
     @ManyToMany(mappedBy = "productoCollection")
@@ -71,6 +71,15 @@ public class Producto implements Serializable {
 
     public Producto() {
     }
+
+    public Producto(Integer idProducto, String nombre, Double precioUnidad, Integer stock) {
+        this.idProducto = idProducto;
+        this.nombre = nombre;
+        this.precioUnidad = precioUnidad;
+        this.stock = stock;
+    }
+    
+    
 
     public Producto(Integer idProducto) {
         this.idProducto = idProducto;
@@ -108,11 +117,11 @@ public class Producto implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public BigInteger getPrecioUnidad() {
+    public Double getPrecioUnidad() {
         return precioUnidad;
     }
 
-    public void setPrecioUnidad(BigInteger precioUnidad) {
+    public void setPrecioUnidad(Double precioUnidad) {
         this.precioUnidad = precioUnidad;
     }
 
@@ -198,5 +207,13 @@ public class Producto implements Serializable {
     public String toString() {
         return "Modelo.Producto[ idProducto=" + idProducto + " ]";
     }
+    
+    public String[] toArrayString(){
+       String[] s= new String[3];
+       s[0]= nombre.toString();
+       s[1]= precioUnidad.toString();
+       s[2]= stock.toString();
+       return s;
+   }
     
 }

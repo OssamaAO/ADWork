@@ -36,6 +36,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Cliente.findByDireccion", query = "SELECT c FROM Cliente c WHERE c.direccion = :direccion"),
     @NamedQuery(name = "Cliente.findByContrase\u00f1a", query = "SELECT c FROM Cliente c WHERE c.contrase\u00f1a = :contrase\u00f1a")})
 public class Cliente implements Serializable {
+    
+    
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,6 +59,20 @@ public class Cliente implements Serializable {
     private Empleado dni;
     @OneToMany(mappedBy = "idCliente")
     private Collection<Compra> compraCollection;
+    
+   
+
+    public Cliente(int idCliente, String nombre, String apellidos, Integer edad, String direccion, String contraseña) {
+        this.idCliente = idCliente;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.edad = edad;
+        this.direccion = direccion;
+        this.contraseña = contraseña;
+    }
+    
+    
+    
 
     public Cliente() {
     }

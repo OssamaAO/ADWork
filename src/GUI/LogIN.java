@@ -5,7 +5,11 @@
  */
 package GUI;
 
+import JPADAO.ClienteImp;
 import JPADAO.EmpleadoImp;
+import Modelo.Cliente;
+import Modelo.Empleado;
+import javax.swing.JOptionPane;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -14,8 +18,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * @author alumno1
  */
 public class LogIN extends javax.swing.JFrame {
+
     ApplicationContext context = new ClassPathXmlApplicationContext("Spring/ADWorkSpringXMLConfig.xml");
     EmpleadoImp empleadoImpl = (EmpleadoImp) context.getBean("EmpleadoJPATemplate");
+    ClienteImp clienteImpl = (ClienteImp) context.getBean("ClienteJPATemplate");
 
     /**
      * Creates new form LogIN
@@ -33,6 +39,7 @@ public class LogIN extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPasswordFieldContraseña = new javax.swing.JPasswordField();
         jTextField_Identificador = new javax.swing.JTextField();
         jButtonIniciarSesion = new javax.swing.JButton();
@@ -40,6 +47,8 @@ public class LogIN extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jRadioButtonEmpleado = new javax.swing.JRadioButton();
+        jRadioButtonCliente = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +60,11 @@ public class LogIN extends javax.swing.JFrame {
         });
 
         jButtonRegistrarse.setText("Registrarse");
+        jButtonRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistrarseActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("¿No tienes cuenta?");
 
@@ -58,33 +72,54 @@ public class LogIN extends javax.swing.JFrame {
 
         jLabel3.setText("Identificador:");
 
+        buttonGroup1.add(jRadioButtonEmpleado);
+        jRadioButtonEmpleado.setSelected(true);
+        jRadioButtonEmpleado.setText("Empleado");
+        jRadioButtonEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonEmpleadoActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(jRadioButtonCliente);
+        jRadioButtonCliente.setText("Cliente");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(192, Short.MAX_VALUE)
+                .addContainerGap(208, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField_Identificador)
-                        .addComponent(jPasswordFieldContraseña)
-                        .addComponent(jButtonIniciarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButtonRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(76, 76, 76)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(177, 177, 177))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(39, 39, 39)
+                            .addComponent(jRadioButtonEmpleado)
+                            .addGap(38, 38, 38)
+                            .addComponent(jRadioButtonCliente))
+                        .addComponent(jTextField_Identificador, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPasswordFieldContraseña, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jButtonIniciarSesion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(161, 161, 161))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jLabel3)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(84, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jRadioButtonEmpleado)
+                    .addComponent(jRadioButtonCliente))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField_Identificador, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel3)
                 .addGap(18, 18, 18)
+                .addComponent(jTextField_Identificador, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPasswordFieldContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -94,19 +129,64 @@ public class LogIN extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionActionPerformed
-        String identificador = jTextField_Identificador.getText();
-        String contraseña = jPasswordFieldContraseña.getText();
         
-        
-        
+            String identificador = jTextField_Identificador.getText();
+            String dni = jTextField_Identificador.getText();
+            String contraseña = jPasswordFieldContraseña.getText();
+            
+            //byte[] dniArray = dni.getBytes();
+            
+            
+            Empleado empleado = empleadoImpl.getEmpleado(identificador);        
+            //String dniE = empleado.getDni();
+            Cliente cliente = clienteImpl.getCliente(Integer.parseInt(identificador));
+            
+            System.out.println(identificador);
+
+            if (jRadioButtonEmpleado.isEnabled() && jRadioButtonEmpleado.isEnabled() == false) {
+                if (empleado.equals(null)) {
+                    JOptionPane.showMessageDialog(this, "Empleado no encontrado.");
+                } else {
+                    if (empleado.getContraseña().equals(contraseña)) {
+                        //Pantalla empleado
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Contraseña incorrecta");
+                    }
+                }
+            } else if (jRadioButtonCliente.isEnabled() && jRadioButtonEmpleado.isEnabled() == false) {
+                if (cliente == null) {
+                    JOptionPane.showMessageDialog(this, "Cliente no encontrado.");
+                } else {
+                    if (cliente.getContraseña().equals(contraseña)) {
+                        PantallaIncialCliente pic = new PantallaIncialCliente();
+                        pic.setVisible(true);
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Contraseña incorrecta");
+                    }
+                }
+     
+            }
+     
+
+
     }//GEN-LAST:event_jButtonIniciarSesionActionPerformed
+
+    private void jRadioButtonEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonEmpleadoActionPerformed
+
+    }//GEN-LAST:event_jRadioButtonEmpleadoActionPerformed
+
+    private void jButtonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarseActionPerformed
+        new PantallaRegistro().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonRegistrarseActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,12 +224,15 @@ public class LogIN extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButtonIniciarSesion;
     private javax.swing.JButton jButtonRegistrarse;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField jPasswordFieldContraseña;
+    private javax.swing.JRadioButton jRadioButtonCliente;
+    private javax.swing.JRadioButton jRadioButtonEmpleado;
     private javax.swing.JTextField jTextField_Identificador;
     // End of variables declaration//GEN-END:variables
 }

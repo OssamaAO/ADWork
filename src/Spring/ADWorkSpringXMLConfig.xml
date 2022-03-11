@@ -40,4 +40,12 @@
           class = "JPADAO.EmpleadoImp">
         <property name="JpaTransactionManager" ref="transactionManager"></property>  
     </bean> 
+     <bean id = "ClienteJPATemplate" 
+          class = "JPADAO.ClienteImp">
+        <property name="JpaTransactionManager" ref="transactionManager"></property>  
+    </bean> 
+     <bean id = "ProductoJPATemplate" 
+          class = "JPADAO.ProductoImp">
+        <property name="JpaTransactionManager" ref="transactionManager"></property>  
+    </bean> 
 </beans>

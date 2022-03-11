@@ -24,11 +24,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ADWorkFinal {
 
     public static void main(String[] args) throws ParseException {
-        ApplicationContext context = new ClassPathXmlApplicationContext("Spring/ADWorkSpringXMLConfig.xml");
-        EmpleadoImp empleadoImpl = (EmpleadoImp) context.getBean("EmpleadoJPATemplate");
+        //ApplicationContext context = new ClassPathXmlApplicationContext("Spring/ADWorkSpringXMLConfig.xml");
+        //EmpleadoImp empleadoImpl = (EmpleadoImp) context.getBean("EmpleadoJPATemplate");
         
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Empleado em1 = new Empleado("111111E", "Ossama", "Aouad", 19, sdf.parse("2002-04-01"), 1000.00, true, "eketit");
+        //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        //Empleado em1 = new Empleado("111111E", "Ossama", "Aouad", 19, sdf.parse("2002-04-01"), 1000.00, true, "eketit");
         
         
         //empleadoImpl.create(em1);
