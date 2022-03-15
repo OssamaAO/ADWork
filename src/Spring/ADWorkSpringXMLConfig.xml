@@ -48,4 +48,8 @@
           class = "JPADAO.ProductoImp">
         <property name="JpaTransactionManager" ref="transactionManager"></property>  
     </bean> 
+       <bean id = "CompraJPATemplate" 
+          class = "JPADAO.CompraImp">
+        <property name="JpaTransactionManager" ref="transactionManager"></property>  
+    </bean> 
 </beans>

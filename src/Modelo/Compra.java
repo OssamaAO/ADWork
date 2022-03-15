@@ -48,7 +48,7 @@ public class Compra implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date fechaCompra;
     @Column(name = "precio_total")
-    private BigInteger precioTotal;
+    private Double precioTotal;
     @JoinTable(name = "compra_producto", joinColumns = {
         @JoinColumn(name = "id_compra", referencedColumnName = "id_compra")}, inverseJoinColumns = {
         @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")})
@@ -59,7 +59,17 @@ public class Compra implements Serializable {
     private Cliente idCliente;
 
     public Compra() {
+       
     }
+
+    public Compra(Integer idCompra, Date fechaCompra, Double precioTotal, Cliente idCliente) {
+        this.idCompra = idCompra;
+        this.fechaCompra = fechaCompra;
+        this.precioTotal = precioTotal;
+        this.idCliente = idCliente;
+    }
+    
+    
 
     public Compra(Integer idCompra) {
         this.idCompra = idCompra;
@@ -81,11 +91,11 @@ public class Compra implements Serializable {
         this.fechaCompra = fechaCompra;
     }
 
-    public BigInteger getPrecioTotal() {
+    public Double getPrecioTotal() {
         return precioTotal;
     }
 
-    public void setPrecioTotal(BigInteger precioTotal) {
+    public void setPrecioTotal(Double precioTotal) {
         this.precioTotal = precioTotal;
     }
 

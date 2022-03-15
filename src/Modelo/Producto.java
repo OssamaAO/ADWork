@@ -209,10 +209,22 @@ public class Producto implements Serializable {
     }
     
     public String[] toArrayString(){
-       String[] s= new String[3];
-       s[0]= nombre.toString();
-       s[1]= precioUnidad.toString();
-       s[2]= stock.toString();
+       String[] s= new String[6];
+       s[0] = idProducto.toString();
+       s[1]= nombre.toString();
+       s[2] = precioUnidad.toString();
+       s[3]= stock.toString();
+       s[4]= marca.toString();
+       s[5] = descripcion.toString();
+       return s;
+   }
+    
+     public String[] toArrayString2(){
+       String[] s= new String[4];
+       s[0] = idProducto.toString();
+       s[1]= nombre.toString();
+       s[2]= precioUnidad.toString();
+       s[3]= stock.toString();
        return s;
    }
     
