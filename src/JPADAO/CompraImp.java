@@ -42,6 +42,10 @@ public class CompraImp implements CompraDAO {
     public List<Compra> listCompra() {
         return entityManager.createQuery("FROM Compra", Compra.class).getResultList();
     }
+    
+    public List<Compra> listCompraCli(Integer idCliente) {
+        return entityManager.createQuery("FROM Compra Where id_cliente = " + idCliente, Compra.class).getResultList();
+    }
 
     @Override
     public void delete(Compra c) {

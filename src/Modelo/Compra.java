@@ -140,4 +140,13 @@ public class Compra implements Serializable {
         return "Modelo.Compra[ idCompra=" + idCompra + " ]";
     }
     
+    public String[] toArrayString(){
+       String[] s= new String[4];
+       s[0] = idCompra.toString();
+       s[1]= idCliente.toString();
+       s[2] = fechaCompra.toString();
+       s[3]= precioTotal.toString();
+       return s;
+   }
+    
 }

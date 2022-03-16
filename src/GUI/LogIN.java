@@ -138,45 +138,38 @@ public class LogIN extends javax.swing.JFrame {
     private void jButtonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionActionPerformed
         
             String identificador = jTextField_Identificador.getText();
-            String dni = jTextField_Identificador.getText();
             String contraseña = jPasswordFieldContraseña.getText();
-            
-            //byte[] dniArray = dni.getBytes();
-            
-            
-            Empleado empleado = empleadoImpl.getEmpleado(identificador);        
-            //String dniE = empleado.getDni();
-            Cliente cliente = clienteImpl.getCliente(Integer.parseInt(identificador));
-            
-            
 
-            if (jRadioButtonEmpleado.isEnabled() && jRadioButtonEmpleado.isEnabled() == false) {
-                if (empleado.equals(null)) {
-                    JOptionPane.showMessageDialog(this, "Empleado no encontrado.");
-                } else {
-                    if (empleado.getContraseña().equals(contraseña)) {
-                        //Pantalla empleado
-                    } else {
-                        JOptionPane.showMessageDialog(this, "Contraseña incorrecta");
-                    }
-                }
-            } else if (jRadioButtonCliente.isEnabled() && jRadioButtonEmpleado.isEnabled() == false) {
-                if (cliente == null) {
-                    JOptionPane.showMessageDialog(this, "Cliente no encontrado.");
-                } else {
-                    if (cliente.getContraseña().equals(contraseña)) {
+            if (jRadioButtonCliente.isSelected()){
+                Cliente cliente = clienteImpl.getCliente(Integer.parseInt(identificador));
+                if(cliente.getContraseña().equals(contraseña))
+                     {
+                        System.out.println("true");
                         PantallaIncialCliente pic = new PantallaIncialCliente();
+                        String id = String.valueOf(cliente.getIdCliente().toString());
+                        PantallaIncialCliente.jLabelIDCliente.setText(id);
+                        //HistorialCliente.jLabelID.setText(id);
                         pic.setVisible(true);
-                        this.dispose();
+                        this.setVisible(false);
                     } else {
-                        JOptionPane.showMessageDialog(this, "Contraseña incorrecta");
+                        JOptionPane.showMessageDialog(this, "Contraseña incorrecta para cliente");
                     }
                 }
-     
+            if (jRadioButtonEmpleado.isSelected() ) {
+                Empleado empleado = empleadoImpl.getEmpleado(String.format(identificador));
+                if(empleado.getContraseña().equals(contraseña)){
+                        System.out.println("true");
+                        PantallaInicialEmpleado pie = new PantallaInicialEmpleado();
+                        pie.setVisible(true);
+                        this.setVisible(false);
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Contraseña incorrecta para empleado");
+                    }
             }
+
      
 
-
+            
     }//GEN-LAST:event_jButtonIniciarSesionActionPerformed
 
     private void jRadioButtonEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonEmpleadoActionPerformed
@@ -184,7 +177,7 @@ public class LogIN extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonEmpleadoActionPerformed
 
     private void jButtonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarseActionPerformed
-//        new PantallaRegistro().setVisible(true);
+        new PantallaRegistro().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonRegistrarseActionPerformed
 
