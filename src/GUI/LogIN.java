@@ -148,7 +148,7 @@ public class LogIN extends javax.swing.JFrame {
             //String dniE = empleado.getDni();
             Cliente cliente = clienteImpl.getCliente(Integer.parseInt(identificador));
             
-            System.out.println(identificador);
+            
 
             if (jRadioButtonEmpleado.isEnabled() && jRadioButtonEmpleado.isEnabled() == false) {
                 if (empleado.equals(null)) {
@@ -184,7 +184,7 @@ public class LogIN extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButtonEmpleadoActionPerformed
 
     private void jButtonRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarseActionPerformed
-        new PantallaRegistro().setVisible(true);
+//        new PantallaRegistro().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButtonRegistrarseActionPerformed
 
